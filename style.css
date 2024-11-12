@@ -1,0 +1,15 @@
+
+header {
+    text-align: center;
+}
+
+.burger {
+    margin: auto;
+    display: block;
+    background-color: #654911;
+    width:70%;
+}
+.burgerImg {
+    text-align: center;
+    height:300px;
+}
