@@ -1,21 +1,21 @@
 [{
-    "name": "Veggie Bliss", 
+    "name": "Cheeseburger",
+    "kCal": 550,
+    "url": "public/img/cheeseburger.jpg",
+    "lactose": true,
+    "gluten": true
+},
+{
+    "name": "Veggie Bliss",
     "kCal": 500, 
     "url": "https://images-bonnier.imgix.net/files/ifo/production/20220412084608/Kødfri-burger-1.jpg?auto=compress,format&w=1024%201024w",
     "lactose": false, 
     "gluten": false
 },
 {
-    "name": "Veggie Bliss", 
-    "kCal": 500, 
-    "url": "https://images-bonnier.imgix.net/files/ifo/production/20220412084608/Kødfri-burger-1.jpg?auto=compress,format&w=1024%201024w",
-    "lactose": false, 
-    "gluten": false
-},
-{
-    "name": "Veggie Bliss", 
-    "kCal": 500, 
-    "url": "https://images-bonnier.imgix.net/files/ifo/production/20220412084608/Kødfri-burger-1.jpg?auto=compress,format&w=1024%201024w",
-    "lactose": false, 
-    "gluten": false
+    "name": "Burger",
+    "kCal": 666,
+    "url": "https://pagen.se/globalassets/recept/nya-format-pa-bilderna/hamburgare-med-god-vitlok-chilimajonnas.jpg?w=734&h=462&mode=crop&resized=true",
+    "lactose": false,
+    "gluten": true
 }]
