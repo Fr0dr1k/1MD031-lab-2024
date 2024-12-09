@@ -4,7 +4,6 @@
   </header>
   <main>
     <section id="burgerSection">
-      <!-- template in parent component -->
       <Burger v-for="burger in burgers"
               v-bind:burger="burger"
               v-bind:key="burger.name"
@@ -35,13 +34,13 @@
             <option>Stealing</option>
           </select>
         </p>
-      <section id = "map-container">
-        <div id="map" v-on:click="addOrder">
-          <div id="dot" v-bind:style="{ left: location.x + 'px', top: location.y + 'px'}">
-            T
+        <div id = "map-container">
+          <div id="map" v-on:click="setLocation">
+            <div id="dot" v-bind:style="{ left: location.x + 'px', top: location.y + 'px'}">
+              T
+            </div>
           </div>
         </div>
-      </section>
 
         <button v-on:click="submitOrder" type="button" id="orderButton">
           Place order
@@ -93,12 +92,20 @@ export default {
       location: {
         x: 0,
         y: 0
-      }
+      },
+      orderNumber: 0
     }
   },
   methods: {
     getOrderNumber: function () {
-      return Math.floor(Math.random()*100000);
+      //return Math.floor(Math.random()*100000);
+      if(this.orderNumber>100){
+        this.orderNumber = 0;
+      }
+      else{
+        this.orderNumber++;
+      }
+      return this.orderNumber;
     },
     addOrder: function (event) {
       var offset = {x: event.currentTarget.getBoundingClientRect().left,
@@ -128,36 +135,18 @@ export default {
       console.log("Order Details:");
       console.log("Name:", this.firstName);
       console.log("Email:", this.eMail);
-      console.log("Payment Method:", this.paymentMethod);
+      console.log("Payment Info:", this.paymentInfo);
       console.log(this.orderedBurgers)
 
-      socket.emit("addOrder", { orderId: this.getOrderNumber(),
-            details: {
-              x: this.location.x,
-              y: this.location.y
-            },
-            orderItems: ["Beans", "Curry"]
+      socket.emit("addOrder", {
+            orderId: this.getOrderNumber(),
+            details: this.location,
+            orderItems: this.orderedBurgers,
+            name: this.firstName + this.firstName,
+            email: this.eMail,
+            paymentInfo: this.paymentInfo,
           }
       );
-
-      /*const formattedOrderItems = [];
-      for (const name in this.orderedBurgers) {
-        const amount = this.orderedBurgers[name];
-        formattedOrderItems.push(name + " (" + amount + ")");
-      }
-      console.log(formattedOrderItems);*/
-
-      /*socket.emit("addOrder", {
-        orderId: this.getOrderNumber(),
-        details: { x: this.location.x, y: this.location.y,
-          customer: {
-            fullName: this.fullName,
-            email: this.email,
-            gender: this.gender,
-            paymentMethod: this.paymentMethod,
-          }},
-        orderItems: Object.keys(this.orderedBurgers),
-      });*/
     },
 
     addToOrder: function (event) {

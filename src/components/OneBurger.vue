@@ -47,14 +47,6 @@ export default {
       if(this.amountOrdered>0){
         this.bgColor = false;
       }
-      this.amountOrdered += 1;
-      this.$emit('orderedBurger', { name:   this.burger.name,
-            amount: this.amountOrdered
-          }
-      );
-    },
-    addBurger: function () {
-      this.amountOrdered += 1;
       this.$emit('orderedBurger', { name:   this.burger.name,
             amount: this.amountOrdered
           }
