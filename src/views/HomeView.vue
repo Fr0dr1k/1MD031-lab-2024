@@ -107,22 +107,6 @@ export default {
       }
       return this.orderNumber;
     },
-    addOrder: function (event) {
-      var offset = {x: event.currentTarget.getBoundingClientRect().left,
-                    y: event.currentTarget.getBoundingClientRect().top};
-
-      this.location = {
-        x: event.clientX - 10 - offset.x,
-        y: event.clientY - 10 - offset.y
-      }
-
-      socket.emit("addOrder", { orderId: this.getOrderNumber(),
-                                details: { x: event.clientX - 10 - offset.x,
-                                           y: event.clientY - 10 - offset.y },
-                                orderItems: ["Beans", "Curry"]
-                              }
-                 );
-    },
 
     setLocation: function (event) {
       this.location = {
